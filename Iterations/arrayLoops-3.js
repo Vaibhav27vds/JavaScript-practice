@@ -21,5 +21,5 @@ const myTechStack = [
 ]
 
 myTechStack.forEach((item)=> {
-    console.log(item.languageFile);
+    console.log(item.languageFile); 
 })

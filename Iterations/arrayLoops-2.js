@@ -7,4 +7,4 @@ const myObject = {
 for (const key in myObject) {
     console.log(`${key} is the shortcut for ${myObject[key]}`);
 }
-
+ 
