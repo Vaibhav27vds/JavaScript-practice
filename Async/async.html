@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async</title>
+</head>
+<body id="body">
+    <h1 id="heading" style="display: flex; justify-content: center;">Click the buttons to see magic</h1>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div style="display: flex; justify-content: space-evenly;">
+    <button id="b1" style=" display: flex; justify-content: center; align-items: center; border-radius: 5px; border: none; padding-top: 10px; padding-bottom: 10px; padding-left: 30px; padding-right: 30px; background-color: BLACK; color:aliceblue; " >Start</button>
+    <button id="b2" style=" display: flex; justify-content: center; align-items: center; border-radius: 5px; border: none; padding-top: 10px; padding-bottom: 10px; padding-left: 30px; padding-right: 30px; background-color: BLACK; color:aliceblue; " >Stop</button>
+    </div>
+</body>
+<script>
+
+    let change;
+var hex = '0123456789ABCDEF'   
+
+const randomColor = function (){
+
+    var hex = '0123456789ABCDEF'   
+    var hexCode = '#'
+
+for (let i = 0; i < 6; i++) { 
+    hexCode += hex[Math.floor(Math.random()*16)];
+}
+
+return hexCode
+}
+
+document.getElementById('b1').addEventListener('click', function(e) {
+     change = setInterval(function(){
+            document.getElementById('body').style.backgroundColor = randomColor();
+        }, 1000)
+    })
+    document.getElementById('b2').addEventListener('click', function(e) {
+        clearInterval(change)
+    })
+</script>
+</html>
+
