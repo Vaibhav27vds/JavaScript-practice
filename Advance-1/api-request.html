@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api</title>
+</head>
+<body style="background-color: black;">
+    <h1 id="heading" style="color:white; display: flex; justify-content: center;">Card</h1>
+    <br><br><br><br><br><br><br><br>
+    <div id="center">
+    <div class="parent">
+        <div class="main">
+        <div id="name"></div> 
+        <div id="login"></div>
+        <div id="none_id"></div>
+        </div>
+        
+        <div id="photo"><img id="image" src=""/></div>
+    </div>
+    </div>
+
+</body>
+<style>
+    #center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .parent {
+        background-color: white;
+        border-radius: 5px;
+        width:350px;
+        height: 150px
+    }
+    #image{
+        width: 100px;
+        height: 100px;
+        border-radius: 2px;
+    }
+    #photo{
+        display: flex;
+        justify-content: right;
+    }
+    .parent{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+</style>
+<script>
+    const requestUrl = 'https://api.github.com/users/vaibhav27vds'
+    const XHR = new XMLHttpRequest()
+    XHR.open('GET', requestUrl)
+    XHR.onreadystatechange = function () {
+        if(XHR.readyState === 4) {
+            console.log(this.responseText)
+            const data = JSON.parse(this.responseText)
+            console.log(typeof data);
+            console.log(data.followers);
+            console.log(data.avatar_url)
+            document.getElementById("name").innerHTML = `Name: ${data.name}`
+            document.getElementById("login").innerHTML = `UserName: ${data.login}`
+            document.getElementById("none_id").innerHTML = `UserID: ${data.node_id}`
+            const photo = document.getElementById('image')
+            photo.src = `${data.avatar_url}`
+        }
+    }
+    XHR.send()
+
+
+</script>
+</html>
